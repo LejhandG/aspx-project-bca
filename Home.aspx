@@ -14,27 +14,30 @@
 </head>
 <body class="bg-[#fafafa] font-inter">
     <form id="form1" runat="server">
-        <nav class="sticky top-0 backdrop-blur-lg bg-white/80 z-50 border-b border-gray-100">
-            <div class="container mx-auto px-6 py-4">
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center space-x-3">
-                        <asp:Image ID="imgLogo" runat="server" 
-                            ImageUrl="https://i.ibb.co/hRwvbfkr/upload.png" 
-                            CssClass="w-8 h-8" AlternateText="logo"/>
-                        <asp:Label ID="lblBrand" runat="server" 
-                            CssClass="text-2xl font-space font-bold text-[#2d3436]">CloudDrop</asp:Label>
-                    </div>
-                    <div class="flex items-center space-x-8">
-                        <asp:HyperLink ID="lnkHome" runat="server" NavigateUrl="/Home.aspx" 
-                            CssClass="text-gray-600 font-medium text-sm">Home</asp:HyperLink>
-                        <asp:HyperLink ID="lnkAbout" runat="server" NavigateUrl="/About.aspx" 
-                            CssClass="text-gray-600 font-medium text-sm">About</asp:HyperLink>
-                        <asp:HyperLink ID="lnkUpload" runat="server" NavigateUrl="/Upload.aspx" 
-                            CssClass="text-black px-6 py-2 rounded-full font-space shadow-lg">Upload</asp:HyperLink>
-                    </div>
-                </div>
+        <div class="sticky top-0 backdrop-blur-lg bg-white/80 z-50 border-b border-gray-100">
+    <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <asp:Image ID="imgLogo" runat="server" ImageUrl="https://i.ibb.co/hRwvbfkr/upload.png" CssClass="w-8 h-8" AlternateText="logo"/>
+                <asp:Label ID="lblLogoText" runat="server" CssClass="text-2xl font-space font-bold text-[#2d3436]">CloudDrop</asp:Label>
             </div>
-        </nav>
+            <div class="flex items-center space-x-8">
+                <asp:HyperLink ID="lnkHome" runat="server" NavigateUrl="/Home.aspx" 
+                    CssClass="text-gray-600 font-medium text-sm">Home</asp:HyperLink>
+                <asp:HyperLink ID="lnkAbout" runat="server" NavigateUrl="/About.aspx" 
+                    CssClass="text-gray-600 font-medium text-sm">About</asp:HyperLink>
+                <asp:HyperLink ID="lnkContact" runat="server" NavigateUrl="/ContactUs.aspx" 
+                    CssClass="text-gray-600 font-medium text-sm">Contact</asp:HyperLink>
+                <asp:HyperLink ID="lnkFetch" runat="server" NavigateUrl="/Fetch.aspx" 
+                    CssClass="text-gray-600 font-medium text-sm">Fetch</asp:HyperLink>
+                <asp:HyperLink ID="lnkRegisterLogin" runat="server" NavigateUrl="/RegisterLogin.aspx" 
+                    CssClass="text-gray-600 font-medium text-sm">Sign In</asp:HyperLink>
+                <asp:HyperLink ID="lnkUpload" runat="server" NavigateUrl="/Upload.aspx" 
+                    CssClass="text-black px-6 py-2 rounded-full font-space shadow-lg">Upload</asp:HyperLink>
+            </div>
+        </div>
+    </div>
+</div>
 
         <div class="container mx-auto px-6 py-20">
             <div class="flex flex-col items-center text-center">
@@ -66,31 +69,15 @@
             <div class="text-gray-500 text-sm mb-4 md:mb-0 font-inter">
                 &copy; <%= DateTime.Now.Year %> CloudDrop. All rights reserved.
             </div>
-            
             <div class="flex space-x-6">
-                <asp:HyperLink 
-                    ID="lnkFooterHome" 
-                    runat="server" 
-                    NavigateUrl="/Home.aspx" 
-                    CssClass="text-gray-600 hover:text-[#2d3436] text-sm transition-colors">
-                    Home
-                </asp:HyperLink>
-                
-                <asp:HyperLink 
-                    ID="lnkFooterAbout" 
-                    runat="server" 
-                    NavigateUrl="/About.aspx" 
-                    CssClass="text-gray-600 hover:text-[#2d3436] text-sm transition-colors">
-                    About
-                </asp:HyperLink>
-                
-                <asp:HyperLink 
-                    ID="lnkFooterUpload" 
-                    runat="server" 
-                    NavigateUrl="/Upload.aspx" 
-                    CssClass="text-gray-600 hover:text-[#2d3436] text-sm transition-colors">
-                    Upload
-                </asp:HyperLink>
+                <asp:HyperLink ID="lnkFooterHome" runat="server" NavigateUrl="/Home.aspx" 
+                    CssClass="text-gray-600 hover:text-[#2d3436] text-sm">Home</asp:HyperLink>
+                <asp:HyperLink ID="lnkFooterAbout" runat="server" NavigateUrl="/About.aspx" 
+                    CssClass="text-gray-600 hover:text-[#2d3436] text-sm">About</asp:HyperLink>
+                <asp:HyperLink ID="lnkFooterContact" runat="server" NavigateUrl="/ContactUs.aspx" 
+                    CssClass="text-gray-600 hover:text-[#2d3436] text-sm">Contact</asp:HyperLink>
+                <asp:HyperLink ID="lnkFooterUpload" runat="server" NavigateUrl="/Upload.aspx" 
+                    CssClass="text-gray-600 hover:text-[#2d3436] text-sm">Upload</asp:HyperLink>
             </div>
         </div>
     </div>
