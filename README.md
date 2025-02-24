@@ -1,113 +1,72 @@
-# CloudDrop ☁️  
-**A Simple File Hosting Platform**  
+# CloudDrop  
 
-This project is a file hosting platform where users can upload files, store them locally, and retrieve them later by searching for the file name. The frontend is fully implemented, and the backend needs to be completed for file handling and user authentication.
+CloudDrop is a file hosting website that allows users to upload files, which are then stored locally in the `uploads` folder of the hosting server. Users can retrieve their files by providing the filename on the Fetch page, which returns a link to the stored file.  
 
----
+## 🚀 Live Demo  
 
-## 📌 **Current Status**  
-Here’s what has been done so far:  
+🔗 **[Click here to try CloudDrop](https://filehosting.somee.com/)**  
 
-### **Frontend (Completed)**  
-1. **Pages Created:**  
-   - `Home.aspx`: Landing page with a description and upload button.  
-   - `Upload.aspx`: Page for uploading files (UI ready).  
-   - `Fetch.aspx`: Page for searching and retrieving files (UI ready).  
-   - `RegisterLogin.aspx`: Page for user registration and login (UI ready).  
-   - `About.aspx`: Page with team information and project details.  
-   - `ContactUs.aspx`: Page with a contact form (UI ready).  
+## 📸 Screenshots  
 
-2. **Styling:**  
-   - Used **Tailwind CSS** for a modern, responsive design.  
-   - Consistent styling across all pages (navbar, footer, buttons, forms).  
+| Page        | Screenshot |
+|------------|------------|
+| Home Page  | ![Home Page](screenshots/home.png) |
+| About Page | ![About Page](screenshots/about.png) |
+| Contact Page | ![Contact Page](screenshots/contact.png) |
+| Sign-in Page | ![Sign-in Page](screenshots/signin.png) |
+| Register Page | ![Register Page](screenshots/register.png) |
+| Upload Page | ![Upload Page](screenshots/upload.png) |
+| Fetch Page | ![Fetch Page](screenshots/fetch.png) |
 
-3. **Navigation:**  
-   - Added all pages to the navbar and footer for easy access.  
+## 🎥 Demo Videos  
 
----
+📌 **Full Upload & Fetch Workflow**  
+[![Upload & Fetch Demo](https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg)](https://www.youtube.com/watch?v=VIDEO_ID)  
 
-## 🖥️ **How It Works (So Far)**  
+📌 **Login & Registration Process**  
+- [Login Demo](https://www.youtube.com/watch?v=VIDEO_ID)  
+- [Register Demo](https://www.youtube.com/watch?v=VIDEO_ID)  
 
-### **File Upload Flow**  
-1. User visits `Upload.aspx`.  
-2. User selects a file using the file input or drag-and-drop area.  
-3. The file is sent to the server (backend not implemented yet).  
-4. The file should be saved in the `Uploads/` folder locally.  
+## ✨ Features  
 
-### **File Fetch Flow**  
-1. User visits `Fetch.aspx`.  
-2. User enters the file name (full or partial) in the search box.  
-3. The backend searches for the file in the `Uploads/` folder.  
-4. If found, the backend returns the file's local storage path as a downloadable link.  
+- **Home Page**: Introduction and overview of CloudDrop.  
+- **About Page**: Information about the project and its developers.  
+- **Contact Page**: Contact form for users to reach out.  
+- **Sign-in Page**: User authentication for secure access.  
+- **Register Page**: New users can sign up for an account.  
+- **Upload Page**: Allows users to upload files to the server.  
+- **Fetch Page**: Users can input a filename to retrieve a link to the file stored on the server.  
 
-### **User Authentication Flow**  
-1. User visits `RegisterLogin.aspx`.  
-2. User can toggle between **Sign Up** and **Sign In** modes.  
-3. User enters credentials (email, password, etc.).  
-4. Backend validates credentials and manages sessions (not implemented yet).  
+## 🛠 Technologies Used  
 
----
+- **HTML**: Structure of the website.  
+- **CSS**: Styling the web pages.  
+- **JavaScript**: Adding interactivity and dynamic content.  
+- **ASP.NET**: Backend framework for handling server-side operations.  
+- **Tailwind CSS**: Utility-first CSS framework for rapid UI development.  
 
-## 🛠️ **What Needs to Be Done (Backend)**  
+## 📦 Installation  
 
-### **1. File Handling Backend**  
-- **Upload Functionality:**  
-  - Save uploaded files to the `Uploads/` folder.  
-  - Validate file types and size (e.g., allow only `.pdf`, `.jpg`, etc.).  
-  - Generate a unique name for each file to avoid conflicts.  
+1. Clone the repository:  
+   ```bash
+   git clone https://github.com/LejhandG/aspx-project-bca.git
+   ```  
+2. Navigate to the project directory:  
+   ```bash
+   cd aspx-project-bca
+   ```  
+3. Set up the project in your preferred ASP.NET environment.  
+4. Start the server and navigate to `http://localhost:port` to see the website.  
 
-- **Fetch Functionality:**  
-  - Search for files in the `Uploads/` folder based on the user's input.  
-  - Return the file path as a downloadable link if found.  
-  - Handle cases where the file is not found.  
+## 🚀 Usage  
 
-### **2. User Authentication Backend**  
-- **Registration:**  
-  - Create a user table in the database (e.g., SQL Server).  
-  - Store user details (email, password hash, etc.).  
-  - Validate input fields (e.g., password strength, unique email).  
+1. **Upload Files**: Go to the Upload page and select a file to upload. The file will be stored in the `uploads` folder on the server.  
+2. **Fetch Files**: On the Fetch page, enter the filename to retrieve the file link. You can then download the file from the provided link.  
 
-- **Login:**  
-  - Authenticate users by checking credentials against the database.  
-  - Manage user sessions (e.g., using cookies or tokens).
+## 🤝 Contributing  
 
----
+Contributions are welcome! Please feel free to submit issues, pull requests, or suggest improvements.  
 
-## 🚀 **Next Steps**  
+## 📜 License  
 
-1. **Set Up Database:**  
-   - Create a database (e.g., SQL Server) for user authentication.  
-   - Add a table for users with fields like `Id`, `Email`, `PasswordHash`, etc.  
-
-2. **Implement File Handling:**  
-   - Complete the backend for `Upload.aspx` and `Fetch.aspx`.  
-   - Add validation for file types and sizes.  
-
-3. **Implement User Authentication:**  
-   - Complete the backend for `RegisterLogin.aspx`.  
-   - Add session management for logged-in users.  
-
-4. **Testing:**  
-   - Test file uploads and retrieval.  
-   - Test user registration and login.  
-
----
-
-## 📝 **Notes for Implementation**  
-
-- **File Storage:**  
-  - All uploaded files are stored in the `Uploads/` folder.  
-  - Ensure the folder has proper permissions for read/write access.  
-
-- **Security:**  
-  - Never store plain-text passwords. Always hash them.  
-  - Sanitize file names to prevent directory traversal attacks.  
-
-- **Error Handling:**  
-  - Add proper error handling for file operations and database queries.  
-
----
-
-Let me know if you need further clarification or help with specific parts of the backend!  
-
---- 
+This project is licensed under the **MIT License**.  
