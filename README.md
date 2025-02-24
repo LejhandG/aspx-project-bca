@@ -25,7 +25,7 @@ CloudDrop is a file hosting website that allows users to upload files, which are
 
 📌 **Login & Registration Process**  
 - [Login Demo](https://www.youtube.com/watch?v=VIDEO_ID)  
-- [Register Demo](https://www.youtube.com/watch?v=VIDEO_ID)  
+- [Register Demo](https://www.youtube.com/watch?v=kEXq8A8owto)  
 
 ## ✨ Features  
 
