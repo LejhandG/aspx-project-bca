@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>✨ CloudDrop</title>
+    <title>CloudDrop</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <style>
@@ -59,7 +59,7 @@
                 
                 <asp:HyperLink ID="lnkGetStarted" runat="server" NavigateUrl="/Upload.aspx"
                     CssClass="text-black px-8 py-3 rounded-full font-space text-lg shadow-lg flex items-center gap-2">
-                    🚀 Get Started
+                    Get Started
                 </asp:HyperLink>
             </div>
         </div>
