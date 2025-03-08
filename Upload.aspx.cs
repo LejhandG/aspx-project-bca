@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Web;
 using System.Web.UI.WebControls;
@@ -28,17 +28,22 @@ namespace yes
         protected void UploadButton_Click(object sender, EventArgs e)
         {
             if (Session["LoggedIn"] == null) return;
-
             string username = Session["LoggedIn"].ToString();
             string uploadPath = Path.Combine(Server.MapPath("~/Uploads"), username);
             Directory.CreateDirectory(uploadPath);
+            string filePaths = "";
 
             foreach (HttpPostedFile postedFile in FileUpload1.PostedFiles)
             {
                 string filePath = Path.Combine(uploadPath, Path.GetFileName(postedFile.FileName));
                 postedFile.SaveAs(filePath);
+                filePaths += filePath + "<br />";
             }
-            Response.Write("<script>alert('Files uploaded successfully!');</script>");
+
+            
+            StatusLabel.Text = "Upload successful! " + filePaths;
+
+            
         }
     }
 }
