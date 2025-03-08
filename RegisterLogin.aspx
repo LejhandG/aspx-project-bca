@@ -13,7 +13,6 @@
 </head>
 <body class="bg-[#fafafa] font-inter">
     <form id="form1" runat="server">
-        <!-- Original Navbar -->
         <div class="sticky top-0 backdrop-blur-lg bg-white/80 z-50 border-b border-gray-100">
             <div class="container mx-auto px-6 py-4">
                 <div class="flex items-center justify-between">
@@ -79,6 +78,14 @@
                 </div>
             </div>
         </main>
+        
+<asp:Panel ID="pnlWelcome" runat="server" Visible="false">
+    <div class="text-center">
+        <h2 class="text-2xl font-space mb-4">Welcome, <asp:Label ID="lblUsername" runat="server" /></h2>
+        <asp:HyperLink ID="lnkGoHome" runat="server" NavigateUrl="Home.aspx" 
+            CssClass="text-[#57a4ff] hover:underline">Go to Home Page</asp:HyperLink>
+    </div>
+</asp:Panel>
 
 
         <div class="bg-white border-t border-gray-100 mt-20">

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -9,48 +9,63 @@ namespace lol
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["LoggedIn"] == null)
+            {
+                Response.Redirect("RegisterLogin.aspx");
+            }
+
             if (!IsPostBack)
             {
-
                 ddlFileTypes.SelectedIndex = 0;
             }
+            if (Session["LoggedIn"] != null)
+            {
+                lnkRegisterLogin.Visible = false;
+                lnkLogout.Visible = true;
+            }
+        }
+
+        protected void lnkLogout_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("RegisterLogin.aspx");
         }
 
         protected void btnLoadFiles_Click(object sender, EventArgs e)
         {
-            string folderPath = @"C:\Users\bdhru\source\repos\File Hosting\File Hosting\Uploads";
-            if (Directory.Exists(folderPath))
-            {
-                BindFiles(folderPath, ddlFileTypes.SelectedValue);
-            }
-            else
-            {
-                Response.Write("<script>alert('Invalid folder path.');</script>");
-            }
+            
+            BindFiles(ddlFileTypes.SelectedValue);
         }
 
         protected void ddlFileTypes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string folderPath = @"C:\Users\bdhru\source\repos\File Hosting\File Hosting\Uploads";
-            if (Directory.Exists(folderPath))
-            {
-                BindFiles(folderPath, ddlFileTypes.SelectedValue);
-            }
+            
+            BindFiles(ddlFileTypes.SelectedValue);
         }
 
-        private void BindFiles(string folderPath, string fileFilter)
+        private void BindFiles(string fileFilter)
         {
-            var files = Directory.GetFiles(folderPath)
-                                   .Where(f => fileFilter.Split(';').Any(ext => f.EndsWith(ext.TrimStart('*'))))
-                                   .Select(f => new
-                                   {
-                                       FileName = Path.GetFileName(f),
-                                       FileType = Path.GetExtension(f),
-                                       FilePath = f
-                                   }).ToList();
+            string username = Session["LoggedIn"].ToString();
+            string folderPath = Path.Combine(Server.MapPath("~/Uploads"), username);
 
-            gvFiles.DataSource = files;
-            gvFiles.DataBind();
+            if (Directory.Exists(folderPath))
+            {
+                var files = Directory.GetFiles(folderPath)
+                    .Where(f => fileFilter.Split(';').Any(ext => f.EndsWith(ext.TrimStart('*'))))
+                    .Select(f => new
+                    {
+                        FileName = Path.GetFileName(f),
+                        FileType = Path.GetExtension(f),
+                        FilePath = f
+                    }).ToList();
+
+                gvFiles.DataSource = files;
+                gvFiles.DataBind();
+            }
+            else
+            {
+                Response.Write("<script>alert('No files found for this user.');</script>");
+            }
         }
 
         protected void gvFiles_RowCommand(object sender, System.Web.UI.WebControls.GridViewCommandEventArgs e)

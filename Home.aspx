@@ -1,10 +1,10 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Home.aspx.cs" Inherits="Home" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Home.aspx.cs" Inherits="Home" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>CloudDrop</title>
+    <title>✨ CloudDrop</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <style>
@@ -31,7 +31,13 @@
                 <asp:HyperLink ID="lnkFetch" runat="server" NavigateUrl="/Fetch.aspx" 
                     CssClass="text-gray-600 font-medium text-sm">Fetch</asp:HyperLink>
                 <asp:HyperLink ID="lnkRegisterLogin" runat="server" NavigateUrl="/RegisterLogin.aspx" 
-                    CssClass="text-gray-600 font-medium text-sm">Sign In</asp:HyperLink>
+        CssClass="text-gray-600 font-medium text-sm" Visible="true">Sign In</asp:HyperLink>
+    <asp:LinkButton ID="lnkLogout" runat="server" 
+        CssClass="text-gray-600 font-medium text-sm hover:text-red-600"
+        Visible="false"
+        OnClick="lnkLogout_Click">
+        Logout
+    </asp:LinkButton>
                 <asp:HyperLink ID="lnkUpload" runat="server" NavigateUrl="/Upload.aspx" 
                     CssClass="text-black px-6 py-2 rounded-full font-space shadow-lg">Upload</asp:HyperLink>
             </div>
@@ -59,7 +65,7 @@
                 
                 <asp:HyperLink ID="lnkGetStarted" runat="server" NavigateUrl="/Upload.aspx"
                     CssClass="text-black px-8 py-3 rounded-full font-space text-lg shadow-lg flex items-center gap-2">
-                    Get Started
+                    🚀 Get Started
                 </asp:HyperLink>
             </div>
         </div>

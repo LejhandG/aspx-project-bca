@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Data.SqlClient;
 
 public partial class RegisterLogin : System.Web.UI.Page
@@ -7,10 +7,17 @@ public partial class RegisterLogin : System.Web.UI.Page
     {
         if (Session["LoggedIn"] != null)
         {
-            lnkAuth.Text = "Logout";
             loginForm.Visible = false;
             registerForm.Visible = false;
+            Response.Write($"<script>alert('Welcome {Session["LoggedIn"]}!');</script>");
+            Response.Redirect("Home.aspx");
         }
+
+    }
+    protected void lnkLogout_Click(object sender, EventArgs e)
+    {
+        Session.Abandon();
+        Response.Redirect("RegisterLogin.aspx");
     }
 
     protected void btnLoginTab_Click(object sender, EventArgs e)
@@ -31,7 +38,7 @@ public partial class RegisterLogin : System.Web.UI.Page
 
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
-        using (SqlConnection con = new SqlConnection(@"workstation id=asplogin.mssql.somee.com;packet size=4096;user id=aspbca_SQLLogin_1;pwd=jbvhmefd82;data source=asplogin.mssql.somee.com;persist security info=False;initial catalog=asplogin;TrustServerCertificate=True"))
+        using (SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-LS1B1UB8\SQLEXPRESS;Initial Catalog=asplogin;Integrated Security=True;TrustServerCertificate=True"))
         {
             con.Open();
             SqlCommand cmd = new SqlCommand(
@@ -56,7 +63,7 @@ public partial class RegisterLogin : System.Web.UI.Page
 
     protected void btnRegister_Click(object sender, EventArgs e)
     {
-        using (SqlConnection con = new SqlConnection(@"workstation id=asplogin.mssql.somee.com;packet size=4096;user id=aspbca_SQLLogin_1;pwd=jbvhmefd82;data source=asplogin.mssql.somee.com;persist security info=False;initial catalog=asplogin;TrustServerCertificate=True"))
+        using (SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-LS1B1UB8\SQLEXPRESS;Initial Catalog=asplogin;Integrated Security=True;TrustServerCertificate=True"))
         {
             con.Open();
             SqlCommand checkCmd = new SqlCommand(

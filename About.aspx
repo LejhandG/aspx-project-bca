@@ -31,7 +31,13 @@
                 <asp:HyperLink ID="lnkFetch" runat="server" NavigateUrl="/Fetch.aspx" 
                     CssClass="text-gray-600 font-medium text-sm">Fetch</asp:HyperLink>
                 <asp:HyperLink ID="lnkRegisterLogin" runat="server" NavigateUrl="/RegisterLogin.aspx" 
-                    CssClass="text-gray-600 font-medium text-sm">Sign In</asp:HyperLink>
+        CssClass="text-gray-600 font-medium text-sm" Visible="true">Sign In</asp:HyperLink>
+    <asp:LinkButton ID="lnkLogout" runat="server" 
+        CssClass="text-gray-600 font-medium text-sm hover:text-red-600"
+        Visible="false"
+        OnClick="lnkLogout_Click">
+        Logout
+    </asp:LinkButton>
                 <asp:HyperLink ID="lnkUpload" runat="server" NavigateUrl="/Upload.aspx" 
                     CssClass="text-black px-6 py-2 rounded-full font-space shadow-lg">Upload</asp:HyperLink>
             </div>

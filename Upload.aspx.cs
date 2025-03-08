@@ -1,28 +1,44 @@
-using System;
+﻿using System;
 using System.IO;
+using System.Web;
 using System.Web.UI.WebControls;
 
 namespace yes
 {
     public partial class Upload : System.Web.UI.Page
     {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (Session["LoggedIn"] == null)
+            {
+                Response.Redirect("RegisterLogin.aspx");
+            }
+            if (Session["LoggedIn"] != null)
+            {
+                lnkRegisterLogin.Visible = false;
+                lnkLogout.Visible = true;
+            }
+        }
+        protected void lnkLogout_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("RegisterLogin.aspx");
+        }
+
         protected void UploadButton_Click(object sender, EventArgs e)
         {
-            if (FileUpload1.HasFile)
-            {
-                string uploadPath = Server.MapPath("Uploads/");
-                if (!Directory.Exists(uploadPath))
-                    Directory.CreateDirectory(uploadPath);
+            if (Session["LoggedIn"] == null) return;
 
-                string filePath = Path.Combine(uploadPath, FileUpload1.FileName);
-                FileUpload1.SaveAs(filePath);
+            string username = Session["LoggedIn"].ToString();
+            string uploadPath = Path.Combine(Server.MapPath("~/Uploads"), username);
+            Directory.CreateDirectory(uploadPath);
 
-                StatusLabel.Text = "Upload successful! " + filePath;
-            }
-            else
+            foreach (HttpPostedFile postedFile in FileUpload1.PostedFiles)
             {
-                StatusLabel.Text = "Please select a file.";
+                string filePath = Path.Combine(uploadPath, Path.GetFileName(postedFile.FileName));
+                postedFile.SaveAs(filePath);
             }
+            Response.Write("<script>alert('Files uploaded successfully!');</script>");
         }
     }
 }

@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Fetch.aspx.cs" Inherits="lol.Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Fetch.aspx.cs" Inherits="lol.Default" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -24,7 +24,14 @@
                         <asp:HyperLink runat="server" NavigateUrl="/About.aspx" CssClass="text-gray-600 font-medium text-sm">About</asp:HyperLink>
                         <asp:HyperLink runat="server" NavigateUrl="/ContactUs.aspx" CssClass="text-gray-600 font-medium text-sm">Contact</asp:HyperLink>
                         <asp:HyperLink runat="server" NavigateUrl="/Fetch.aspx" CssClass="text-gray-600 font-medium text-sm">Fetch</asp:HyperLink>
-                        <asp:HyperLink runat="server" NavigateUrl="/RegisterLogin.aspx" CssClass="text-gray-600 font-medium text-sm">Sign In</asp:HyperLink>
+                        <asp:HyperLink ID="lnkRegisterLogin" runat="server" NavigateUrl="/RegisterLogin.aspx" 
+        CssClass="text-gray-600 font-medium text-sm" Visible="true">Sign In</asp:HyperLink>
+    <asp:LinkButton ID="lnkLogout" runat="server" 
+        CssClass="text-gray-600 font-medium text-sm hover:text-red-600"
+        Visible="false"
+        OnClick="lnkLogout_Click">
+        Logout
+    </asp:LinkButton>
                         <asp:HyperLink runat="server" NavigateUrl="/Upload.aspx" CssClass="text-black px-6 py-2 rounded-full font-space shadow-lg">Upload</asp:HyperLink>
                     </div>
                 </div>

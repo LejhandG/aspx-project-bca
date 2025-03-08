@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Home.aspx.cs" Inherits="Home" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Upload.aspx.cs" Inherits="yes.Upload" %>
 
 <!DOCTYPE html>
 
@@ -35,7 +35,13 @@
                 <asp:HyperLink ID="lnkFetch" runat="server" NavigateUrl="/Fetch.aspx" 
                     CssClass="text-gray-600 font-medium text-sm">Fetch</asp:HyperLink>
                 <asp:HyperLink ID="lnkRegisterLogin" runat="server" NavigateUrl="/RegisterLogin.aspx" 
-                    CssClass="text-gray-600 font-medium text-sm">Sign In</asp:HyperLink>
+        CssClass="text-gray-600 font-medium text-sm" Visible="true">Sign In</asp:HyperLink>
+    <asp:LinkButton ID="lnkLogout" runat="server" 
+        CssClass="text-gray-600 font-medium text-sm hover:text-red-600"
+        Visible="false"
+        OnClick="lnkLogout_Click">
+        Logout
+    </asp:LinkButton>
                 <asp:HyperLink ID="lnkUpload" runat="server" NavigateUrl="/Upload.aspx" 
                     CssClass="text-black px-6 py-2 rounded-full font-space shadow-lg">Upload</asp:HyperLink>
             </div>
@@ -56,8 +62,8 @@
                         <asp:Label ID="lblDragDrop" runat="server" CssClass="text-gray-500 block">Drag and drop your files anywhere</asp:Label>
                         <asp:Label ID="lblOr" runat="server" CssClass="text-sm text-gray-400 block">or</asp:Label>
                         
-                        <asp:FileUpload ID="fileUpload" runat="server" AllowMultiple="true" CssClass="hidden" />
-                        <asp:Label AssociatedControlID="fileUpload" runat="server" 
+                        <asp:FileUpload ID="FileUpload1" runat="server" AllowMultiple="true" CssClass="hidden" />
+                        <asp:Label AssociatedControlID="FileUpload1" runat="server" 
                             CssClass="inline-block font-space px-6 py-2 bg-white text-black rounded-full shadow-lg cursor-pointer">
                             Browse Files
                         </asp:Label>
@@ -65,9 +71,11 @@
                 </div>
                 
                 <div class="mt-12 border-t border-black-100 pt-8">
-                    <asp:Button ID="btnUpload" runat="server" Text="Start Upload" 
-                        CssClass="font-space px-8 py-3 bg-[#57a4ff] text-black rounded-full shadow-lg cursor-pointer" />
+                    <asp:Button ID="UploadButton" runat="server" Text="Start Upload"
+                        CssClass="font-space px-8 py-3 bg-[#57a4ff] text-black rounded-full shadow-lg cursor-pointer" OnClick="UploadButton_Click" />
                 </div>
+                 <asp:Label ID="StatusLabel" runat="server" Text="" 
+    CssClass="mt-4 text-sm font-medium text-gray-600 block" />
             </div>
         </main>
         <div class="bg-white border-t border-gray-100 mt-20">
