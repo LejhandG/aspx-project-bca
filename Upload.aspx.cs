@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Web;
 using System.Web.UI.WebControls;
@@ -29,6 +29,11 @@ namespace yes
         {
             if (Session["LoggedIn"] == null) return;
             string username = Session["LoggedIn"].ToString();
+            if (!FileUpload1.HasFile)
+    {
+        StatusLabel.Text = "Error: Please select a file to upload.";
+        return;
+    }
             string uploadPath = Path.Combine(Server.MapPath("~/Uploads"), username);
             Directory.CreateDirectory(uploadPath);
             string filePaths = "";
@@ -37,7 +42,7 @@ namespace yes
             {
                 string filePath = Path.Combine(uploadPath, Path.GetFileName(postedFile.FileName));
                 postedFile.SaveAs(filePath);
-                filePaths += filePath + "<br />";
+                filePaths += filePath.Replace(@"d:\DZHosts\LocalUser\aspbca\", "") + "<br />";
             }
 
             

@@ -19,6 +19,44 @@ public partial class RegisterLogin : System.Web.UI.Page
         Response.Redirect("RegisterLogin.aspx");
     }
 
+    protected bool ValidateUsername(string username)
+{
+    // Check length
+    if (username.Length < 4 || username.Length > 20)
+    {
+        Response.Write("<script>alert('Username must be between 4 and 20 characters long.')</script>");
+        return false;
+    }
+
+    // Check allowed characters (alphanumeric, underscore, and period)
+    if (!System.Text.RegularExpressions.Regex.IsMatch(username, @"^[a-zA-Z0-9_.]+$"))
+    {
+        Response.Write("<script>alert('Username can only contain letters, numbers, underscores, and periods.')</script>");
+        return false;
+    }
+
+    return true;
+}
+
+protected bool ValidatePassword(string password)
+{
+    // Check length
+    if (password.Length < 8 || password.Length > 30)
+    {
+        Response.Write("<script>alert('Password must be between 8 and 30 characters long.')</script>");
+        return false;
+    }
+
+    // Check complexity
+    if (!System.Text.RegularExpressions.Regex.IsMatch(password, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$"))
+    {
+        Response.Write("<script>alert('Password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character.')</script>");
+        return false;
+    }
+
+    return true;
+}
+
     protected void btnLoginTab_Click(object sender, EventArgs e)
     {
         loginForm.Visible = true;
@@ -62,6 +100,14 @@ public partial class RegisterLogin : System.Web.UI.Page
 
     protected void btnRegister_Click(object sender, EventArgs e)
     {
+string username = txtRegEmail.Text;
+    string password = txtRegPassword.Text;
+
+    // Validate username and password
+    if (!ValidateUsername(username) || !ValidatePassword(password))
+    {
+        return; // Stop if validation fails
+    }
         using (SqlConnection con = new SqlConnection(@"workstation id=asplogin.mssql.somee.com;packet size=4096;user id=aspbca_SQLLogin_1;pwd=jbvhmefd82;data source=asplogin.mssql.somee.com;persist security info=False;initial catalog=asplogin;TrustServerCertificate=True"))
         {
             con.Open();

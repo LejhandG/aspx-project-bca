@@ -44,29 +44,31 @@ namespace lol
         }
 
         private void BindFiles(string fileFilter)
-        {
-            string username = Session["LoggedIn"].ToString();
-            string folderPath = Path.Combine(Server.MapPath("~/Uploads"), username);
-
-            if (Directory.Exists(folderPath))
+{
+    string username = Session["LoggedIn"].ToString();
+    string folderPath = Path.Combine(Server.MapPath("~/Uploads"), username);
+    if (Directory.Exists(folderPath))
+    {
+        var files = Directory.GetFiles(folderPath)
+            .Where(f => 
+                fileFilter == "*" || // Show all files if "All Files" is selected
+                fileFilter.Split(';')
+                    .Any(ext => f.EndsWith(ext.TrimStart('*'), StringComparison.OrdinalIgnoreCase))
+            ) // This closing parenthesis was missing
+            .Select(f => new
             {
-                var files = Directory.GetFiles(folderPath)
-                    .Where(f => fileFilter.Split(';').Any(ext => f.EndsWith(ext.TrimStart('*'))))
-                    .Select(f => new
-                    {
-                        FileName = Path.GetFileName(f),
-                        FileType = Path.GetExtension(f),
-                        FilePath = f
-                    }).ToList();
-
-                gvFiles.DataSource = files;
-                gvFiles.DataBind();
-            }
-            else
-            {
-                Response.Write("<script>alert('No files found for this user.');</script>");
-            }
-        }
+                FileName = Path.GetFileName(f),
+                FileType = Path.GetExtension(f),
+                FilePath = f
+            }).ToList();
+        gvFiles.DataSource = files;
+        gvFiles.DataBind();
+    }
+    else
+    {
+        Response.Write("<script>alert('No files found for this user.');</script>");
+    }
+}
 
         protected void gvFiles_RowCommand(object sender, System.Web.UI.WebControls.GridViewCommandEventArgs e)
         {

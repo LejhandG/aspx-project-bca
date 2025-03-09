@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Fetch.aspx.cs" Inherits="lol.Default" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Fetch.aspx.cs" Inherits="lol.Default" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -54,7 +54,7 @@
                                 <asp:DropDownList ID="ddlFileTypes" runat="server" AutoPostBack="true" 
                                     OnSelectedIndexChanged="ddlFileTypes_SelectedIndexChanged"
                                     CssClass="px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#57a4ff] outline-none">
-                                    <asp:ListItem Text="Select" Value="." />
+                                    <asp:ListItem Text="All Files" Value="*" />
                                     <asp:ListItem Text="Text Files" Value=".txt" />
                                     <asp:ListItem Text="PDF Files" Value=".pdf" />
                                     <asp:ListItem Text="Image Files" Value=".jpg;.png;*.gif" />
