@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="RegisterLogin.aspx.cs" Inherits="RegisterLogin" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="RegisterLogin.aspx.cs" Inherits="RegisterLogin" %>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -46,7 +46,7 @@
                         <div>
                             <asp:TextBox ID="txtEmail" runat="server" 
                                 CssClass="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#57a4ff] outline-none" 
-                                placeholder="Email"></asp:TextBox>
+                                placeholder="Username"></asp:TextBox>
                         </div>
                         <div>
                             <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" 
@@ -64,7 +64,7 @@
                         <div>
                             <asp:TextBox ID="txtRegEmail" runat="server" 
                                 CssClass="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#57a4ff] outline-none" 
-                                placeholder="Email"></asp:TextBox>
+                                placeholder="Username"></asp:TextBox>
                         </div>
                         <div>
                             <asp:TextBox ID="txtRegPassword" runat="server" TextMode="Password" 

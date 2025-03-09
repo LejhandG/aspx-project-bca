@@ -51,10 +51,10 @@ namespace lol
     {
         var files = Directory.GetFiles(folderPath)
             .Where(f => 
-                fileFilter == "*" ||
+                fileFilter == "*" || // Show all files if "All Files" is selected
                 fileFilter.Split(';')
                     .Any(ext => f.EndsWith(ext.TrimStart('*'), StringComparison.OrdinalIgnoreCase))
-            )
+            ) // This closing parenthesis was missing
             .Select(f => new
             {
                 FileName = Path.GetFileName(f),
